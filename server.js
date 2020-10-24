@@ -161,7 +161,7 @@ function handleEvent(event) {
     // indexが返ってくれば該当indexのモンスターの弱点を返す
     const seMess = {
       type: 'text',
-      text: `${monsterData[index[0]].name}だニャ！\n１番の弱点は【${monsterData[index[0]].weak1}】ニャ！\n\n２番目の弱点は【${monsterData[index[0]].weak2}】\n弱い部分は【${monsterData[index[0]].breakPoint}】\nまたの呼び名は【${monsterData[index[0]].nickname}】\n\n以上ニャ！`
+      text: `${monsterData[index[0]].name}だニャ...\n\n１番の弱点は【${monsterData[index[0]].weak1}】ニャ\n２番目の弱点は【${monsterData[index[0]].weak2}】\n弱い部分は【${monsterData[index[0]].breakPoint}】\nまたの呼び名は【${monsterData[index[0]].nickname}】\n\n以上ニャ！`
     }
     return client.replyMessage(event.replyToken, seMess)
   }
