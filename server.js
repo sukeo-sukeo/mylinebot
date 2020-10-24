@@ -112,6 +112,17 @@ function handleEvent(event) {
         break
       }
 
+      case 'あしゅ': {
+        const result = searchMonsterName(monsterData, '亜種')
+        const arry = []
+        result.forEach(idx => {
+          arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
+        })
+        seMess.type = 'text'
+        seMess.text = '★亜種一覧ニャ\n【】は弱点ニャ！★' + '\n\n' + arry.join('\n') + '\n\n以上ニャ！'
+        break
+      }
+
       case '二つ名': {
         const result = searchMonsterName(monsterData, '二つ名')
         const arry = []
@@ -124,6 +135,17 @@ function handleEvent(event) {
       }
 
       case '２つ名': {
+        const result = searchMonsterName(monsterData, '二つ名')
+        const arry = []
+        result.forEach(idx => {
+          arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
+        })
+        seMess.type = 'text'
+        seMess.text = '★強いやつらニャ\n【】は弱点ニャ！★' + '\n\n' + arry.join('\n') + '\n\n以上ニャ！'
+        break
+      }
+
+      case '２つな': {
         const result = searchMonsterName(monsterData, '二つ名')
         const arry = []
         result.forEach(idx => {
