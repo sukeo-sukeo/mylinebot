@@ -1,16 +1,16 @@
 'use strict'
 
-const arry = [
+const datas = [
   {name: 'アンイシュワルダ', nickname: '地啼龍', weak1: '氷', weak2: 'なし',  breakPoint: '頭' },
   {name: 'アンジャナフ', nickname: '蛮顎竜', weak1: '水', weak2: '氷',  breakPoint: '鼻・翼' },
   {name: 'アンジャナフ亜種', nickname: '雷顎竜', weak1: '氷', weak2: '水',  breakPoint: 'なし' },
   {name: 'イヴェルカーナ', nickname: '冰龍', weak1: '火', weak2: '雷',  breakPoint: 'なし' },
   {name: 'イビルジョー', nickname: '恐暴竜', weak1: '龍', weak2: '雷',  breakPoint: 'なし' },
-  {name: '怒り喰らうイビルジョー', nickname: '恐暴竜', weak1: '龍', weak2: 'なし',  breakPoint: 'なし' },
+  {name: '怒り喰らうイビルジョー', nickname: '恐暴竜', weak1: '龍', weak2: 'なし',  breakPoint: 'なし', secondname: true },
   {name: 'イャンガルルガ', nickname: '黒狼鳥', weak1: '水', weak2: 'なし',  breakPoint: 'なし' },
-  {name: '傷ついたイャンガルルガ', nickname: '傷痕', weak1: '水', weak2: 'なし',  breakPoint: 'なし' },
+  {name: '傷ついたイャンガルルガ', nickname: '傷痕', weak1: '水', weak2: 'なし',  breakPoint: 'なし', secondname: true },
   {name: 'ヴァルハザク', nickname: '屍套龍', weak1: '火', weak2: '龍',  breakPoint: 'なし' },
-  {name: '死を纏うヴァルハザク', nickname: '死屍', weak1: '火', weak2: '龍',  breakPoint: 'なし' },
+  {name: '死を纏うヴァルハザク', nickname: '死屍', weak1: '火', weak2: '龍',  breakPoint: 'なし', secondname: true },
   {name: 'ヴォルガノス', nickname: '溶岩竜', weak1: '水', weak2: '火',  breakPoint: 'なし' },
   {name: 'ウラガンキン', nickname: '爆鎚竜', weak1: '水', weak2: '龍',  breakPoint: '頭・腹部' },
   {name: 'オドガロン', nickname: '惨爪竜', weak1: '氷', weak2: '雷',  breakPoint: 'なし' },
@@ -40,12 +40,12 @@ const arry = [
   {name: 'ナナテスカリオ',  nickname: '炎妃龍', weak1: '氷', weak2: '龍',  breakPoint: 'なし' },
   {name: 'ナルガクルガ',  nickname: '迅竜', weak1: '雷', weak2: 'なし',  breakPoint: 'なし' },
   {name: 'ネルギガンテ',  nickname: '滅尽龍', weak1: '雷', weak2: 'なし',  breakPoint: 'なし' },
-  {name: '悉くを滅ぼすネルギガンテ',  nickname: '滅尽龍', weak1: '龍', weak2: 'なし',  breakPoint: 'なし' },
+  {name: '悉くを滅ぼすネルギガンテ',  nickname: '滅尽龍', weak1: '龍', weak2: 'なし',  breakPoint: 'なし', secondname: true },
   {name: 'ネロミュール',  nickname: '溟龍', weak1: '火', weak2: '龍・氷',  breakPoint: '頭・前脚' },
   {name: 'パオウルムー',  nickname: '浮空竜', weak1: '火', weak2: '雷',  breakPoint: '頸袋・頭' },
   {name: 'パオウルムー亜種',  nickname: '浮眠竜', weak1: '水', weak2: '雷',  breakPoint: 'なし' },
   {name: 'バゼルギウス',  nickname: '爆鱗竜', weak1: '雷', weak2: 'なし',  breakPoint: 'なし' },
-  {name: '紅蓮滾るバゼルギウス',  nickname: '紅蓮', weak1: '氷', weak2: '雷',  breakPoint: 'なし' },
+  {name: '紅蓮滾るバゼルギウス',  nickname: '紅蓮', weak1: '氷', weak2: '雷',  breakPoint: 'なし', secondname: true },
   {name: 'バフバロ',  nickname: '猛牛', weak1: '龍', weak2: 'なし',  breakPoint: '頭' },
   {name: 'プケプケ',  nickname: '毒妖鳥', weak1: '雷', weak2: 'なし',  breakPoint: '頭・尻尾' },
   {name: 'プケプケ亜種',  nickname: '水妖鳥', weak1: '氷', weak2: '雷',  breakPoint: '頭' },
@@ -64,8 +64,8 @@ const arry = [
   {name: 'リオレウス亜種',  nickname: '蒼火竜', weak1: '龍', weak2: '氷',  breakPoint: 'なし' },
   {name: 'リオレウス希少種',  nickname: '銀火竜', weak1: '水', weak2: 'なし',  breakPoint: '頭' },
   {name: 'レイギエナ',  nickname: '風漂竜', weak1: '雷', weak2: '火',  breakPoint: '頭・翼' },
-  {name: '凍て刺すレイギエナ',  nickname: '氷霜をまとう', weak1: '火', weak2: '雷',  breakPoint: 'なし' }
+  {name: '凍て刺すレイギエナ',  nickname: '氷霜をまとう', weak1: '火', weak2: '雷',  breakPoint: 'なし', secondname: true}
 ]
 
 
-module.exports = arry
+module.exports = datas
