@@ -86,10 +86,18 @@ function handleEvent(event) {
     //受信ワードによる分岐処理
     const seMess = {}
     switch (reMess) {
+
       case 'せつめい': {
         return client.replyMessage(event.replyToken, {
           type: 'text',
-          text: `モンスター名を教えてくれれば弱点情報を教えるニャ！\nほかには...\n\n「亜種」で亜種モンスターと弱点の一覧\n「二つ名」で二つ名持ちのモンスターと弱点の一覧\n「一覧」で 全モンスターと弱点の一覧\n\n以上ニャ！`
+          text: `モンスター名を教えてくれれば弱点情報を教えるニャ！\n\nほかにも...\n「亜種」で亜種モンスターの一覧\n「二つ名」で二つ名持ちのモンスターの一覧\n「一覧」で全モンスターの一覧\n\n以上ニャ！`
+        })
+      }
+
+      case '説明': {
+        return client.replyMessage(event.replyToken, {
+          type: 'text',
+          text: `モンスター名を教えてくれれば弱点情報を教えるニャ！\n\nほかにも...\n「亜種」で亜種モンスターの一覧\n「二つ名」で二つ名持ちのモンスターの一覧\n「一覧」で全モンスターの一覧\n\n以上ニャ！`
         })
       }
 
