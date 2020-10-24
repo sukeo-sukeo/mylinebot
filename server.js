@@ -94,7 +94,7 @@ function handleEvent(event) {
           arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
         })
         seMess.type = 'text'
-        seMess.text = '★亜種一覧ニャ\n【】は弱点ニャ！★' + '\n' + arry.join('\n')
+        seMess.text = '★亜種一覧ニャ\n\n【】は弱点ニャ！★' + '\n' + arry.join('\n')
         break
       }
 
@@ -105,7 +105,7 @@ function handleEvent(event) {
           arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
         })
         seMess.type = 'text'
-        seMess.text = '★強いやつらニャ\n【】は弱点ニャ！★' + '\n' + arry.join('\n')
+        seMess.text = '★強いやつらニャ\n\n【】は弱点ニャ！★' + '\n' + arry.join('\n')
         break
       }
 
@@ -116,7 +116,7 @@ function handleEvent(event) {
           arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
         })
         seMess.type = 'text'
-        seMess.text = '★強いやつらニャ\n【】は弱点ニャ！★' + '\n' + arry.join('\n')
+        seMess.text = '★強いやつらニャ\n\n【】は弱点ニャ！★' + '\n' + arry.join('\n')
         break
       }
 
@@ -127,7 +127,7 @@ function handleEvent(event) {
           arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
         })
         seMess.type = 'text'
-        seMess.text = '★強いやつらニャ\n【】は弱点ニャ！★' + '\n' + arry.join('\n')
+        seMess.text = '★強いやつらニャ\n\n【】は弱点ニャ！★' + '\n' + arry.join('\n')
         break
       }
 
@@ -136,7 +136,7 @@ function handleEvent(event) {
           return `${data.name}【${data.weak1},${data.weak2}】`
         })
         seMess.type = 'text'
-        seMess.text = `★モンスターぜんぶニャ\n【】は弱点ニャ！★\n${result.join('\n')}`
+        seMess.text = `★モンスターぜんぶニャ\n\n【】は弱点ニャ！★\n${result.join('\n')}`
         break
       }
 
@@ -145,7 +145,7 @@ function handleEvent(event) {
           return `${data.name}【${data.weak1},${data.weak2}】`
         })
         seMess.type = 'text'
-        seMess.text = `★モンスターぜんぶニャ\n【】は弱点ニャ！★\n${result.join('\n')}`
+        seMess.text = `★モンスターぜんぶニャ\n\n【】は弱点ニャ！★\n${result.join('\n')}`
         break
       }
 
