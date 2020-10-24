@@ -73,7 +73,7 @@ function handleEvent(event) {
   })
 
   console.timeEnd('process-time');
-
+// 亜種がいないモンスターに亜種をつけて送信したとき
   if (typeof index[0] === 'string') {
     return client.replyMessage(event.replyToken, {
       type: 'text',
@@ -86,6 +86,12 @@ function handleEvent(event) {
     //受信ワードによる分岐処理
     const seMess = {}
     switch (reMess) {
+      case 'せつめい': {
+        return client.replyMessage(event.replyToken, {
+          type: 'text',
+          text: `モンスター名を教えてくれれば弱点情報を教えるニャ！\nほかには...\n\n「亜種」で亜種モンスターと弱点の一覧\n「二つ名」で二つ名持ちのモンスターと弱点の一覧\n「一覧」で 全モンスターと弱点の一覧\n\n以上ニャ！`
+        })
+      }
 
       case '亜種': {
         const result = searchMonsterName(monsterData, '亜種')
@@ -94,7 +100,7 @@ function handleEvent(event) {
           arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
         })
         seMess.type = 'text'
-        seMess.text = '★亜種一覧ニャ\n\n【】は弱点ニャ！★' + '\n' + arry.join('\n')
+        seMess.text = '★亜種一覧ニャ\n【】は弱点ニャ！★' + '\n\n' + arry.join('\n') + '\n\n以上ニャ！'
         break
       }
 
@@ -105,7 +111,7 @@ function handleEvent(event) {
           arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
         })
         seMess.type = 'text'
-        seMess.text = '★強いやつらニャ\n\n【】は弱点ニャ！★' + '\n' + arry.join('\n')
+        seMess.text = '★強いやつらニャ\n【】は弱点ニャ！★' + '\n\n' + arry.join('\n') + '\n\n以上ニャ！'
         break
       }
 
@@ -116,7 +122,7 @@ function handleEvent(event) {
           arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
         })
         seMess.type = 'text'
-        seMess.text = '★強いやつらニャ\n\n【】は弱点ニャ！★' + '\n' + arry.join('\n')
+        seMess.text = '★強いやつらニャ\n【】は弱点ニャ！★' + '\n\n' + arry.join('\n') + '\n\n以上ニャ！'
         break
       }
 
@@ -127,7 +133,7 @@ function handleEvent(event) {
           arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
         })
         seMess.type = 'text'
-        seMess.text = '★強いやつらニャ\n\n【】は弱点ニャ！★' + '\n' + arry.join('\n')
+        seMess.text = '★強いやつらニャ\n【】は弱点ニャ！★' + '\n\n' + arry.join('\n') + '\n\n以上ニャ！'
         break
       }
 
@@ -136,7 +142,7 @@ function handleEvent(event) {
           return `${data.name}【${data.weak1},${data.weak2}】`
         })
         seMess.type = 'text'
-        seMess.text = `★モンスターぜんぶニャ\n\n【】は弱点ニャ！★\n${result.join('\n')}`
+        seMess.text = `★モンスターぜんぶニャ\n【】は弱点ニャ！★\n\n${result.join('\n')}\n\n以上ニャ！`
         break
       }
 
@@ -145,7 +151,7 @@ function handleEvent(event) {
           return `${data.name}【${data.weak1},${data.weak2}】`
         })
         seMess.type = 'text'
-        seMess.text = `★モンスターぜんぶニャ\n\n【】は弱点ニャ！★\n${result.join('\n')}`
+        seMess.text = `★モンスターぜんぶニャ\n【】は弱点ニャ！★\n\n${result.join('\n')}\n\n以上ニャ！`
         break
       }
 
