@@ -92,7 +92,7 @@ const datas = [
     },
     {
       name: '傷ついたイャンガルルガ',
-      nickname: '傷痕',
+      nickname: '黒狼鳥',
       weak1: '水',
       weak2: '龍',
       咆哮: '大',
@@ -758,7 +758,7 @@ const datas = [
     },
     {
       name: '凍て刺すレイギエナ',
-      nickname: '氷霜をまとう',
+      nickname: '風漂竜',
       weak1: '火',
       weak2: '雷',
       咆哮: '大',

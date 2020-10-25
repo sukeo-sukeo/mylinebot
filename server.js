@@ -67,6 +67,16 @@ function handleEvent(event) {
           return true
         }
       }
+      //さらに'希少種'ワードが含まれていたら次の次にあるデータ（希少種が入っている）を出す
+      if (reMess.includes('希少種')) {
+        if (reMess === monsterData[i + 2].name) {
+          index.push(i +  2)
+          return true
+        } else {
+          index.push('そのモンスターに\n希少種はいないニャ')
+          return true
+        }
+      }
       index.push(i)
       return true
     }
@@ -91,7 +101,7 @@ function handleEvent(event) {
       case 'せつめい':
       {
         seMess.type = 'text',
-        seMess.text = `モンスター名を教えてくれれば弱点情報を教えるニャ！\n\nほかにも...\n「亜種」で亜種モンスターの一覧\n「二つ名」で二つ名持ちのモンスターの一覧\n「一覧」で全モンスターの一覧\n\nモンスター名はしっかり教えてくれニャ！\nほかはひらがなでも大丈夫ニャ！\n\n以上ニャ！`
+        seMess.text = `モンスター名を教えてくれれば弱点情報を教えるニャ！\n\nほかにも...\n\n「亜種」で\n亜種モンスターの一覧\n\n「二つ名」で\n二つ名持ちのモンスターの一覧\n\n「一覧」で\n全モンスターの一覧\n\n「通り名」で\n各モンスターのかっこいい別名一覧\n\nをそれぞれ教えるニャ！\n\nモンスター名はしっかり教えてくれニャ！\n\n以上ニャ！`
         break
       }
 
@@ -126,6 +136,21 @@ function handleEvent(event) {
         seMess.text = `★モンスターぜんぶニャ\n【】は弱点ニャ！★\n\n${result.join('\n')}\n\n以上ニャ！`
         break
       }
+
+      case '異名':
+      case '別名':
+      case '通り名':
+      case 'いみょう':
+      case 'べつめい':
+      case 'とおりな':
+      {
+       const result = monsterData.map(data => {
+         return `${data.name}\n${data.nickname}\n`
+       })
+       seMess.type = 'text'
+       seMess.text = `★かっこいい通り名一覧ニャ★\n\n${result.join('\n')}\n\n以上ニャ！`
+       break
+     }
 
       default: {
         seMess.type = 'text'
