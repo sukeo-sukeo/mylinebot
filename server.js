@@ -1,6 +1,6 @@
 'use strict';
 
-const url = 'https://immense-temple-88625.herokuapp.com/callback'
+const url = 'https://return-weaknesses.herokuapp.com/callback'
 
 const line = require('@line/bot-sdk');
 const express = require('express');
@@ -81,104 +81,46 @@ function handleEvent(event) {
     })
   }
 
-  //data.jsにnameがない場合（indexがundefined）
+  //data.jsにピンポイントでnameがない場合（indexがundefined）ワードによって表示を振り分ける
   if (index[0] === undefined) {
     //受信ワードによる分岐処理
     const seMess = {}
     switch (reMess) {
 
-      case 'せつめい': {
-        return client.replyMessage(event.replyToken, {
-          type: 'text',
-          text: `モンスター名を教えてくれれば弱点情報を教えるニャ！\n\nほかにも...\n「亜種」で亜種モンスターの一覧\n「二つ名」で二つ名持ちのモンスターの一覧\n「一覧」で全モンスターの一覧\nモンスター名はしっかり教えてくれニャ！ほかはひらがなでも大丈夫ニャ！\n\n以上ニャ！`
-        })
+      case '説明':
+      case 'せつめい':
+      {
+        seMess.type = 'text',
+        seMess.text = `モンスター名を教えてくれれば弱点情報を教えるニャ！\n\nほかにも...\n「亜種」で亜種モンスターの一覧\n「二つ名」で二つ名持ちのモンスターの一覧\n「一覧」で全モンスターの一覧\n\nモンスター名はしっかり教えてくれニャ！\nほかはひらがなでも大丈夫ニャ！\n\n以上ニャ！`
+        break
       }
 
-      case '説明': {
-        return client.replyMessage(event.replyToken, {
-          type: 'text',
-          text: `モンスター名を教えてくれれば弱点情報を教えるニャ！\n\nほかにも...\n「亜種」で亜種モンスターの一覧\n「二つ名」で二つ名持ちのモンスターの一覧\n「一覧」で全モンスターの一覧\n\n以上ニャ！`
-        })
-      }
-
-      case '亜種': {
-        const result = searchMonsterName(monsterData, '亜種')
-        const arry = []
-        result.forEach(idx => {
-          arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
-        })
+      case '亜種':
+      case 'あしゅ':
+       {
+        const arry = serchMethod('亜種')
         seMess.type = 'text'
         seMess.text = '★亜種一覧ニャ\n【】は弱点ニャ！★' + '\n\n' + arry.join('\n') + '\n\n以上ニャ！'
         break
       }
 
-      case 'あしゅ': {
-        const result = searchMonsterName(monsterData, '亜種')
-        const arry = []
-        result.forEach(idx => {
-          arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
-        })
-        seMess.type = 'text'
-        seMess.text = '★亜種一覧ニャ\n【】は弱点ニャ！★' + '\n\n' + arry.join('\n') + '\n\n以上ニャ！'
-        break
-      }
-
-      case '二つ名': {
-        const result = searchMonsterName(monsterData, '二つ名')
-        const arry = []
-        result.forEach(idx => {
-          arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
-        })
+      case '二つ名':
+      case '２つ名':
+      case '二つな':
+      case '２つな':
+      case 'ふたつな':
+       {
+        const arry = serchMethod('二つ名')
         seMess.type = 'text'
         seMess.text = '★強いやつらニャ\n【】は弱点ニャ！★' + '\n\n' + arry.join('\n') + '\n\n以上ニャ！'
         break
       }
 
-      case '２つ名': {
-        const result = searchMonsterName(monsterData, '二つ名')
-        const arry = []
-        result.forEach(idx => {
-          arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
-        })
-        seMess.type = 'text'
-        seMess.text = '★強いやつらニャ\n【】は弱点ニャ！★' + '\n\n' + arry.join('\n') + '\n\n以上ニャ！'
-        break
-      }
-
-      case '２つな': {
-        const result = searchMonsterName(monsterData, '二つ名')
-        const arry = []
-        result.forEach(idx => {
-          arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
-        })
-        seMess.type = 'text'
-        seMess.text = '★強いやつらニャ\n【】は弱点ニャ！★' + '\n\n' + arry.join('\n') + '\n\n以上ニャ！'
-        break
-      }
-
-      case 'ふたつな': {
-        const result = searchMonsterName(monsterData, '二つ名')
-        const arry = []
-        result.forEach(idx => {
-          arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1},${monsterData[idx].weak2}】`)
-        })
-        seMess.type = 'text'
-        seMess.text = '★強いやつらニャ\n【】は弱点ニャ！★' + '\n\n' + arry.join('\n') + '\n\n以上ニャ！'
-        break
-      }
-
-      case 'いちらん': {
+      case '一覧':
+      case 'いちらん':
+       {
         const result = monsterData.map(data => {
-          return `${data.name}【${data.weak1},${data.weak2}】`
-        })
-        seMess.type = 'text'
-        seMess.text = `★モンスターぜんぶニャ\n【】は弱点ニャ！★\n\n${result.join('\n')}\n\n以上ニャ！`
-        break
-      }
-
-      case '一覧': {
-        const result = monsterData.map(data => {
-          return `${data.name}【${data.weak1},${data.weak2}】`
+          return `${data.name}【${data.weak1}】`
         })
         seMess.type = 'text'
         seMess.text = `★モンスターぜんぶニャ\n【】は弱点ニャ！★\n\n${result.join('\n')}\n\n以上ニャ！`
@@ -194,13 +136,29 @@ function handleEvent(event) {
     return client.replyMessage(event.replyToken, seMess)
 
   } else {
-    // indexが返ってくれば該当indexのモンスターの弱点を返す
+    // indexが返ってくれば該当indexのモンスターの詳細データを返す
     const seMess = {
       type: 'text',
-      text: `${monsterData[index[0]].name}だニャ...\n\n１番の弱点は【${monsterData[index[0]].weak1}】ニャ\n２番目の弱点は【${monsterData[index[0]].weak2}】\n弱い部分は【${monsterData[index[0]].breakPoint}】\nまたの呼び名は【${monsterData[index[0]].nickname}】\n\n以上ニャ！`
+      text: `${monsterData[index[0]].name}だニャ...\n\n１番の弱点は【${monsterData[index[0]].weak1}】\n２番目の弱点は【${monsterData[index[0]].weak2}】ニャ！\n\n咆哮【${monsterData[index[0]]['咆哮']}】\n風圧【${monsterData[index[0]]['風圧']}】\n振動【${monsterData[index[0]]['振動']}】\n\nまたの呼び名は【${monsterData[index[0]].nickname}】\n\n`
     }
+    //追加情報があれば表示
+    if (monsterData[index[0]].info.length) {
+      seMess.text = seMess.text + monsterData[index[0]].info + 'ニャ！\n\n'
+    }
+    //締めのセリフ
+    seMess.text = seMess.text + '以上ニャ！'
     return client.replyMessage(event.replyToken, seMess)
   }
+}
+
+//モンスター検索関数を起動する関数
+const serchMethod = (word) => {
+  const result = searchMonsterName(monsterData, word)
+  const arry = []
+  result.forEach(idx => {
+    arry.push(`${monsterData[idx].name}【${monsterData[idx].weak1}】`)
+  })
+  return arry
 }
 
 //モンスター検索関数
